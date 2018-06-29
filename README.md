@@ -56,6 +56,15 @@ master_df15<-read.csv('data/2015Q4-capitalbikeshare-tripdata.csv')
 master_df <- rbind(master_df16,master_df15)
 ```
 
+### Dataset overview
+
+```{r }
+str(master_df)
+head(master_df)
+```
+
+![alt text](https://github.com/evagian/bike-sharing-exploratory-data-analysis/blob/master/plots/data-overview.JPG)
+
 Take a smaller random sample of the data. It will make plotting faster
 
 ```{r }
@@ -111,17 +120,7 @@ df$end.year <- unclass(df$End.date)$year+1900
 # Start date day != End date day
 df$returnnextday <- ifelse(df$end.dayofyear!=df$start.dayofyear, 1, 0)
 df$returnnextday<- as.factor(df$returnnextday)
-```
-
-
-### Dataset overview
-
-```{r }
-str(df)
-head(df)
-```
-
-![alt text](https://github.com/evagian/bike-sharing-exploratory-data-analysis/blob/master/plots/data-overview.jpg)
+``` 
 
 ### Count nulls
 
