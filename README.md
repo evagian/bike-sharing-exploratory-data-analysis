@@ -168,6 +168,8 @@ NUmber of members vs number of casual users
 doPlots(cat, fun = plotHist, ii = 6, ncol = 1)
 ```
 
+![alt text](https://github.com/evagian/bike-sharing-exploratory-data-analysis/blob/master/plots/1.png)
+
 Plot numeric distribution of numeric columns
 
 ```{r }
@@ -178,6 +180,8 @@ df %>%
   facet_wrap(~ key, scales = "free") +   # In separate panels
   geom_density() 
 ```
+
+![alt text](https://github.com/evagian/bike-sharing-exploratory-data-analysis/blob/master/plots/2.png)
 
 ### Data aggregation
 
@@ -258,6 +262,10 @@ plot_grid(g2)
 plot_grid(g3)
 ```
 
+![alt text](https://github.com/evagian/bike-sharing-exploratory-data-analysis/blob/master/plots/3.png)
+
+![alt text](https://github.com/evagian/bike-sharing-exploratory-data-analysis/blob/master/plots/4.png)
+
 More EDA plots
 
 ```{r }
@@ -279,6 +287,13 @@ plot_grid(g6)
 plot_grid(g7)
 plot_grid(g8)
 ```
+![alt text](https://github.com/evagian/bike-sharing-exploratory-data-analysis/blob/master/plots/5.png)
+
+![alt text](https://github.com/evagian/bike-sharing-exploratory-data-analysis/blob/master/plots/6.png)
+
+![alt text](https://github.com/evagian/bike-sharing-exploratory-data-analysis/blob/master/plots/7.png)
+
+![alt text](https://github.com/evagian/bike-sharing-exploratory-data-analysis/blob/master/plots/8.png)
 
 Ride ditribution and duration trends thoughout the days of the week and the hours of the day
 
@@ -306,6 +321,8 @@ g102 <- ggplot(data=df.1, aes(x=start.hour, y=start.dayofweek, fill=total.durati
   scale_fill_gradient(low = "white", high = "springgreen3")
 plot_grid(g100, g102, nrow = 2, rel_heights = c(1/2, 1/2))
 ```
+
+![alt text](https://github.com/evagian/bike-sharing-exploratory-data-analysis/blob/master/plots/9.png)
 
 ### Plot most popular stations on the map
 
@@ -345,6 +362,8 @@ base.map + geom_point(aes(x = lon, y = lat, size=total.rides, color=avg.duration
 
 ```
 
+![alt text](https://github.com/evagian/bike-sharing-exploratory-data-analysis/blob/master/plots/10.png)
+
 ### Create ride density maps
 
 ```{r }
@@ -354,6 +373,8 @@ base.map.2 + geom_density2d(data = map_df[sample(1:nrow(map_df), 10000),],
                                                                                            bins = 30, geom = "polygon", contour = TRUE) + scale_fill_gradient(low = "springgreen", high = "red") + 
   scale_alpha(range = c(0, 0.3), guide = FALSE)
 ```
+
+![alt text](https://github.com/evagian/bike-sharing-exploratory-data-analysis/blob/master/plots/11.png)
 
 ```{r }
 
@@ -380,6 +401,8 @@ dc.map.3 + stat_density2d(aes(x=LONGITUDE, y=LATITUDE, fill=..level.., alpha=..l
 g13
 ```
 
+![alt text](https://github.com/evagian/bike-sharing-exploratory-data-analysis/blob/master/plots/12.png)
+
 ### Ride distribution per day and per hour 
 
 ```{r }
@@ -389,11 +412,15 @@ ggplot(data = df) +
   geom_density(aes(x = start.hour, color = start.dayofweek), adjust = 3) 
 ```
 
+![alt text](https://github.com/evagian/bike-sharing-exploratory-data-analysis/blob/master/plots/13.png)
+
 ### Ride distribution per day of the year
 ```{r }
 ggplot(data = df) +
   geom_density(aes(x = start.dayofyear, color =Member.type), adjust = 3) 
 ```
+
+![alt text](https://github.com/evagian/bike-sharing-exploratory-data-analysis/blob/master/plots/14.png)
 
 ### Ride distribution per day of the month
 ```{r }
@@ -404,11 +431,17 @@ ggplot(data = df) +
   geom_density(aes(x = start.dayofmonth, color =start.month), adjust = 3) 
 ```
 
+![alt text](https://github.com/evagian/bike-sharing-exploratory-data-analysis/blob/master/plots/15.png)
+
+![alt text](https://github.com/evagian/bike-sharing-exploratory-data-analysis/blob/master/plots/16.png)
+
 # Ride duration distribution in minutes
 ```{r }
 ggplot(data = df) +
   geom_density(aes(x = duration.min, color = Member.type), adjust = 3) + xlim(0, 100)
 ```
+
+![alt text](https://github.com/evagian/bike-sharing-exploratory-data-analysis/blob/master/plots/17.png)
 
 # Most popular routes
 
@@ -431,6 +464,7 @@ ggplot(toproutes, aes(x=Start.station, y=n, reorder(Start.station, n))) +
   coord_flip()
 ```
 
+![alt text](https://github.com/evagian/bike-sharing-exploratory-data-analysis/blob/master/plots/18.png)
 
 ### Visualize on a Categorical variable
 ```{r }
@@ -470,4 +504,9 @@ g + geom_bar(aes(fill=Member.type), width = 0.5) +
 
 ```
 
+![alt text](https://github.com/evagian/bike-sharing-exploratory-data-analysis/blob/master/plots/19.png)
+
+![alt text](https://github.com/evagian/bike-sharing-exploratory-data-analysis/blob/master/plots/20.png)
+
+![alt text](https://github.com/evagian/bike-sharing-exploratory-data-analysis/blob/master/plots/21.png)
 
