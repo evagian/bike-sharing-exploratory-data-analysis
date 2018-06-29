@@ -121,6 +121,8 @@ str(df)
 head(df)
 ```
 
+![alt text](https://github.com/evagian/bike-sharing-exploratory-data-analysis/blob/master/plots/data-overview.jpg)
+
 ### Count nulls
 
 ```{r }
