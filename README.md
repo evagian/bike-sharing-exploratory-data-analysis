@@ -41,6 +41,7 @@ library(grid)
 library(ggplot2)
 library(lattice)
 library(e1071)  
+library(plyr) 
 library(dplyr)
 library(tidyr)
 library(purrr)
@@ -511,3 +512,72 @@ g + geom_bar(aes(fill=Member.type), width = 0.5) +
 
 ![alt text](https://github.com/evagian/bike-sharing-exploratory-data-analysis/blob/master/plots/21.png)
 
+
+```{r }
+# boxplots per year - month
+names(df)
+count.summary <- ddply(df,.(start.year, start.month,start.dayofweek ), summarise, 
+                       total.rides = length(X),
+                       avgDuration = mean(duration.min))
+names(count.summary)
+# boxplot of rental v.s. holiday 
+ggplot(count.summary, aes(x = start.year, y = total.rides, fill = factor(start.month))) +
+  geom_boxplot(outlier.color = adjustcolor("black", alpha.f = 0), na.rm = TRUE) +
+  theme_light(base_size = 11) +
+  xlab("Year") +
+  ylab("Number of Bike Rentals") +
+  ggtitle("\n") +
+  scale_fill_manual(values=c("#D6EAF8", "#2ECC71", "#E74C3C", "#F39C12"), 
+                    name="Month:",
+                    breaks=c("October", "November", "December"),
+                    labels=c("October", "November", "December")) +
+  theme(plot.title = element_text(size = 11, face="bold"))
+
+ggplot(count.summary, aes(x = start.year, y = avgDuration, fill = factor(start.month))) +
+  geom_boxplot(outlier.color = adjustcolor("black", alpha.f = 0), na.rm = TRUE) +
+  theme_light(base_size = 11) +
+  xlab("Year") +
+  ylab("Number of Bike Rentals") +
+  ggtitle("\n") +
+  scale_fill_manual(values=c("#D6EAF8", "#2ECC71", "#E74C3C", "#F39C12"), 
+                    name="Month:",
+                    breaks=c("October", "November", "December"),
+                    labels=c("October", "November", "December")) +
+  theme(plot.title = element_text(size = 11, face="bold"))
+
+
+# boxplots per year - day of week
+
+# boxplot of rental v.s. holiday 
+ggplot(count.summary, aes(x = start.year, y = total.rides, fill = factor(start.dayofweek))) +
+  geom_boxplot(outlier.color = adjustcolor("black", alpha.f = 0), na.rm = TRUE) +
+  theme_light(base_size = 11) +
+  xlab("Year") +
+  ylab("Number of Bike Rentals") +
+  ggtitle("\n") +
+  scale_fill_manual(values=c("#D6EAF8", "#2ECC71", "#E74C3C", "#F39C12", "#68C3D4", "#FFE8D1","#826251"), 
+                    name="Weekday:",
+                    breaks=c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"),
+                    labels=c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")) +
+  theme(plot.title = element_text(size = 11, face="bold"))
+
+ggplot(count.summary, aes(x = start.year, y = avgDuration, fill = factor(start.dayofweek))) +
+  geom_boxplot(outlier.color = adjustcolor("black", alpha.f = 0), na.rm = TRUE) +
+  theme_light(base_size = 11) +
+  xlab("Year") +
+  ylab("Number of Bike Rentals") +
+  ggtitle("\n") +
+  scale_fill_manual(values=c("#D6EAF8", "#2ECC71", "#E74C3C", "#F39C12", "#68C3D4","#FFE8D1", "#826251"), 
+                    name="Weekday:",
+                    breaks=c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"),
+                    labels=c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")) +
+  theme(plot.title = element_text(size = 11, face="bold"))
+```
+
+![alt text](https://github.com/evagian/bike-sharing-exploratory-data-analysis/blob/master/plots/boxplot1.png)
+
+![alt text](https://github.com/evagian/bike-sharing-exploratory-data-analysis/blob/master/plots/boxplot2.png)
+
+![alt text](https://github.com/evagian/bike-sharing-exploratory-data-analysis/blob/master/plots/boxplot3.png)
+
+![alt text](https://github.com/evagian/bike-sharing-exploratory-data-analysis/blob/master/plots/boxplot4.png)
